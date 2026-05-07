@@ -1,0 +1,67 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# hood2net
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The `hood2net` package takes a list of words and/or their phonological transcriptions and creates a language network based on their neighborhood structure.
+
+First, the phonological/orthographic neighbors for each item in the list are identified based on various definitions of a "neighbor". A pair of words can be considered to be neighbors (and thus become connected in the network) via the following ways: edit-distance (substitution, deletion, or addition; i.e., Levenshtein) or substitution only (i.e., Hamming). The default setting uses a distance of 1, but larger distances can be specified for a more liberal definition of a neighbor. The segmentation of the transcription can also be specified: either based on single character (i.e., single letter or phoneme) or user-specified segments indicated by separators (e.g., larger chunks like syllables or morphemes that are more than a single character separated by a '.'). 
+
+`hood2net` then summarizes the neighborhood information for all items in the list into an `igraph` network object for subsequent analyses. Helper functions for extracting network metrics, neighborhood size, and other information from the language network are provided. This package is intended for psycholinguists interested in modeling language networks and lexical neighborhoods in various languages.
+
+## Installation
+
+You can install the development version of hood2net like so:
+
+``` r
+# install.packages('devtools')
+devtools::install_github('csqsiew/hood2net')
+```
+
+## Example
+
+Get started with `hood2net` right away: 
+
+```{r example, eval=FALSE, include=TRUE}
+library(hood2net)
+
+sample1 # this is a sample list of items that comes with the package
+
+# create a network based on 1-edit distance of their spellings
+my_network <- make_network(sample1) 
+
+my_network 
+```
+
+After creating the network, you can use helper functions to get some information about the network: 
+
+```{r example2, eval=FALSE, include=TRUE}
+# overall network metrics 
+get_network_info(my_network)
+
+# neighborhood size of each node in the network
+get_neighbor_size(my_network)
+```
+
+Check out the vignette for more detailed examples. 
+
+## Feedback and comments welcome 
+
+If you experience any issues or bugs when using the package, please feel free to raise an issue on the Github page. If you have questions or any comments about it, I would love to hear them--do email me at hello at cloud dot csqsiew dot xyz
+
+Finally, there are many ways to define what counts as a neighbor, although the 1-edit distance is a very common approach used in the field (e.g., Luce & Pisoni, 1998). If you have any suggestions for alternative approaches, feel free to pop them into the issues page. 

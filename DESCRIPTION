@@ -1,0 +1,35 @@
+Package: hood2net
+Title: Creates A Language Network From Neighborhoods of Words
+Version: 0.0.0.9000
+Authors@R: 
+    person("Cynthia", "Siew", , "cynthia.siew@mailfence.com", role = c("aut", "cre"))
+Description: This package takes a list of words and/or their phonological 
+    transcriptions and creates a language network based on their neighborhood 
+    structure. First, the phonological/orthographic neighbors for each item in 
+    the list are identified based on various definitions of a "neighbor" (e.g., 
+    edit-distance (substitution, deletion, or addition), substitution-only; 
+    distance size (1-edit or more); based on single characters or segments indicated 
+    by separators) and summarizes this information in an igraph network object 
+    for subsequent analyses. Helper functions for extracting network metrics, 
+    neighbors, and other information from the language network are provided. 
+    This package is intended for psycholinguists interested in modeling language 
+    networks and word neighborhoods in various languages.  
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Imports:
+    igraph,
+    Rcpp,
+    stringdist
+Depends: 
+    R (>= 4.1.0)
+LazyData: true
+LinkingTo: Rcpp
+NeedsCompilation: yes
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
+VignetteBuilder: knitr
