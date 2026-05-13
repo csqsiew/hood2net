@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # hood2net
 
 <!-- badges: start -->
+# hood2net <a href="https://csqsiew.github.io/hood2net/"><img src="man/figures/logo.png" align="right" height="139" alt="hood2net website" /></a>
 <!-- badges: end -->
 
 The `hood2net` package takes a list of words and/or their phonological transcriptions and creates a language network based on their neighborhood structure.
