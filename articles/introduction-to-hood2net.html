@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hood2net</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,13 +133,25 @@ extended to languages beyond English.</p>
 <div class="section level2">
 <h2 id="set-up">Set up<a class="anchor" aria-label="anchor" href="#set-up"></a>
 </h2>
-<p><code>hood2net</code> can be downloaded from Github while the package
-is being prepared for submission to CRAN as follows. In order to compile
-the package on your local computer, Windows users will need to
-install…</p>
+<p>The development version of <code>hood2net</code> can be downloaded
+from Github using the following code. In order to compile the package on
+your local computer, additional programs may need to be installed. For
+instance, Windows users will need to install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">RTools</a>,
+whereas Mac users will probably need XCode.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install devtools first if needed</span></span>
+<code class="sourceCode R"><span><span class="co"># install.packages('devtools')</span></span>
 <span><span class="co"># devtools::install_github('csqsiew/hood2net')</span></span>
+<span></span>
+<span><span class="co"># alternatively</span></span>
+<span><span class="co"># install.packages('pak')</span></span>
+<span><span class="co"># pak::pkg_install("csqsiew/hootnet")</span></span>
+<span></span>
+<span><span class="co"># then load the package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://csqsiew.github.io/hood2net/">hood2net</a></span><span class="op">)</span></span></code></pre></div>
+<p>Alternatively, <code>hood2net</code> can also be installed from CRAN
+as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages('hood2net')</span></span>
 <span></span>
 <span><span class="co"># then load the package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://csqsiew.github.io/hood2net/">hood2net</a></span><span class="op">)</span></span></code></pre></div>
@@ -149,7 +161,7 @@ install…</p>
 </h2>
 <p>We’ll create our first language network from a sample list of words
 provided in the package. Let’s view the list:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sample1</span></span>
 <span><span class="co">#&gt;      item length</span></span>
 <span><span class="co">#&gt; 1     cat      3</span></span>
@@ -166,7 +178,7 @@ number of letters. Let’s say we want to create an orthographic
 similarity network where pairs of words that are different by the
 substitution, deletion or addition of one letter. We can run the
 following R code as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
 <span></span>
@@ -188,7 +200,7 @@ segment each item based on single characters, and to create neighbors
 based on 1-edit (Levenshtein) distance.</p>
 <p>If we would like to create substitution-only networks, we can easily
 do this by changing the arguments in <code>make_network</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span>, neighbor_type <span class="op">=</span> <span class="st">'hamming'</span><span class="op">)</span> <span class="co"># sub-only</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
 <span></span>
@@ -198,7 +210,7 @@ do this by changing the arguments in <code>make_network</code>:</p>
 <p>For a more liberal operationalization of neighbors, we can also allow
 pairs of words to be neighbors if they are different by up to 2-edit
 distance, by adapting the code as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span>, edit_size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
 <span></span>
@@ -215,7 +227,7 @@ In this sample list, we have the same list of items as before, but with
 periods (.) separating each letter. We can use the
 <code>make_network_sep</code> function to create a network by segmenting
 the items based on the periods:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sample2</span></span>
 <span><span class="co">#&gt;            item length</span></span>
 <span><span class="co">#&gt; 1         c.a.t      3</span></span>
@@ -245,7 +257,7 @@ permitted. The other arguments mentioned, <code>edit_size</code> and
 <p><em>Pro-tip</em>: You may want to save very large networks as they
 take a long time to complete. This can be done easily and then you can
 reload the file into your next R session.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># save</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">g1</span>, file <span class="op">=</span> <span class="st">'my-network.RDS'</span><span class="op">)</span></span>
 <span></span>
@@ -263,7 +275,7 @@ global-level or macro-level information about the network structure, and
 </h3>
 <p>The helper function <code>get_network_info</code> can be used to get
 this information readily:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_network_info.html">get_network_info</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          nodes          edges           ASPL      global CC        mean CC </span></span>
 <span><span class="co">#&gt;          9.000          9.000          1.821          0.273          0.267 </span></span>
@@ -310,7 +322,7 @@ online tutorial “Introduction to Network Analysis in
 <p>If you wish to compute other network measures, you can simply pass
 the network object into the relevant <code>igraph</code> function. Below
 we compute the density of the network <code>g1</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r.igraph.org/" class="external-link">igraph</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://r.igraph.org/reference/edge_density.html" class="external-link">edge_density</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
@@ -323,7 +335,7 @@ we compute the density of the network <code>g1</code>:</p>
 easily extract the neighborhood information for all or subsets of nodes
 in the network.</p>
 <p>To obtain neighborhood size, which corresponds to node degree:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_neighbor_size.html">get_neighbor_size</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span></span>
 <span><span class="co">#&gt;         5         2         1         1         5         2         1         1 </span></span>
@@ -331,7 +343,7 @@ in the network.</p>
 <span><span class="co">#&gt;         0</span></span></code></pre></div>
 <p>To obtain local clustering coefficient, which is a measure of how
 interconnected a node’s neighborhood is:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_neighbor_clustering.html">get_neighbor_clustering</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span></span>
 <span><span class="co">#&gt;       0.2       1.0       0.0       0.0       0.2       1.0       0.0       0.0 </span></span>
@@ -340,7 +352,7 @@ interconnected a node’s neighborhood is:</p>
 <p>It is also possible to compute the mean of a node’s neighbors’
 property. Recall that in <code>sample1</code>, there was a second column
 depicting the length of the word:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sample1</span></span>
 <span><span class="co">#&gt;      item length</span></span>
 <span><span class="co">#&gt; 1     cat      3</span></span>
@@ -354,13 +366,13 @@ depicting the length of the word:</p>
 <span><span class="co">#&gt; 9 spinach      7</span></span></code></pre></div>
 <p>In the constructed network, <code>length</code> is included as a node
 or vertex attribute.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
-<span><span class="co">#&gt; IGRAPH c7d317c UN-- 9 9 -- test</span></span>
+<span><span class="co">#&gt; IGRAPH 923b90f UN-- 9 9 -- test</span></span>
 <span><span class="co">#&gt; + attr: name (g/c), name (v/c), item (v/c), length (v/n)</span></span></code></pre></div>
 <p>This makes it possible to obtain the mean length of each node’s
 neighbor, as follows:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_neighbor_mean.html">get_neighbor_mean</a></span><span class="op">(</span><span class="va">g1</span>, attribute <span class="op">=</span> <span class="st">'length'</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span></span>
 <span><span class="co">#&gt;       3.2       3.0       3.0       3.0       3.6       3.0       3.0       3.0 </span></span>

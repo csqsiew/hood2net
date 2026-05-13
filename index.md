@@ -1,5 +1,9 @@
 # hood2net
 
+# hood2net
+
+[![R-CMD-check](https://github.com/csqsiew/hood2net/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/csqsiew/hood2net/actions/workflows/R-CMD-check.yaml)
+
 The `hood2net` package takes a list of words and/or their phonological
 transcriptions and creates a language network based on their
 neighborhood structure.
@@ -31,6 +35,17 @@ You can install the development version of hood2net like so:
 
 # install.packages('devtools')
 devtools::install_github('csqsiew/hood2net')
+
+# alternatively 
+# install.packages('pak')
+pak::pkg_install("csqsiew/hootnet")
+```
+
+Or directly from CRAN:
+
+``` r
+
+install.packages('hood2net')
 ```
 
 ## Example

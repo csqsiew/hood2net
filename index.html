@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Creates A Language Network From Neighborhoods of Words • hood2net</title>
+<title>Create a Language Network from Neighborhoods of Words • hood2net</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -15,9 +15,9 @@
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Creates A Language Network From Neighborhoods of Words">
-<meta name="description" content='This package takes a list of words and/or their phonological transcriptions and creates a language network based on their neighborhood structure. First, the phonological/orthographic neighbors for each item in the list are identified based on various definitions of a "neighbor" (e.g., edit-distance (substitution, deletion, or addition), substitution-only; distance size (1-edit or more); based on single characters or segments indicated by separators) and summarizes this information in an igraph network object for subsequent analyses. Helper functions for extracting network metrics, neighbors, and other information from the language network are provided. This package is intended for psycholinguists interested in modeling language networks and word neighborhoods in various languages.'>
-<meta property="og:description" content='This package takes a list of words and/or their phonological transcriptions and creates a language network based on their neighborhood structure. First, the phonological/orthographic neighbors for each item in the list are identified based on various definitions of a "neighbor" (e.g., edit-distance (substitution, deletion, or addition), substitution-only; distance size (1-edit or more); based on single characters or segments indicated by separators) and summarizes this information in an igraph network object for subsequent analyses. Helper functions for extracting network metrics, neighbors, and other information from the language network are provided. This package is intended for psycholinguists interested in modeling language networks and word neighborhoods in various languages.'>
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Create a Language Network from Neighborhoods of Words">
+<meta name="description" content="Input a list of words and/or their phonological transcriptions and this package creates a language network based on their neighborhood structure. First, the phonological/orthographic neighbors for each item in the list are identified based on various definitions of a neighbor (e.g., edit-distance (substitution, deletion, or addition), substitution-only; distance size (1-edit or more); based on single characters or segments indicated by separators) and summarizes this information in an igraph network object for subsequent analyses. Helper functions for extracting network metrics, neighbors, and other information from the language network are provided. This package is intended for psycholinguists interested in modeling language networks and word neighborhoods in various languages.">
+<meta property="og:description" content="Input a list of words and/or their phonological transcriptions and this package creates a language network based on their neighborhood structure. First, the phonological/orthographic neighbors for each item in the list are identified based on various definitions of a neighbor (e.g., edit-distance (substitution, deletion, or addition), substitution-only; distance size (1-edit or more); based on single characters or segments indicated by separators) and summarizes this information in an igraph network object for subsequent analyses. Helper functions for extracting network metrics, neighbors, and other information from the language network are provided. This package is intended for psycholinguists interested in modeling language networks and word neighborhoods in various languages.">
 <meta property="og:image" content="https://csqsiew.github.io/hood2net/logo.png">
 </head>
 <body>
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">hood2net</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,12 @@
 </h1>
 </div>
 <!-- badges: start -->
-<!-- badges: end -->
+</div>
+<div class="section level1">
+<h1 id="hood2net-">hood2net 
+<a class="anchor" aria-label="anchor" href="#hood2net-"></a>
+</h1>
+<p><a href="https://github.com/csqsiew/hood2net/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/csqsiew/hood2net/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <!-- badges: end --></p>
 <p>The <code>hood2net</code> package takes a list of words and/or their phonological transcriptions and creates a language network based on their neighborhood structure.</p>
 <p>First, the phonological/orthographic neighbors for each item in the list are identified based on various definitions of a “neighbor”. A pair of words can be considered to be neighbors (and thus become connected in the network) via the following ways: edit-distance (substitution, deletion, or addition; i.e., Levenshtein) or substitution only (i.e., Hamming). The default setting uses a distance of 1, but larger distances can be specified for a more liberal definition of a neighbor. The segmentation of the transcription can also be specified: either based on single character (i.e., single letter or phoneme) or user-specified segments indicated by separators (e.g., larger chunks like syllables or morphemes that are more than a single character separated by a ‘.’).</p>
 <p><code>hood2net</code> then summarizes the neighborhood information for all items in the list into an <code>igraph</code> network object for subsequent analyses. Helper functions for extracting network metrics, neighborhood size, and other information from the language network are provided. This package is intended for psycholinguists interested in modeling language networks and lexical neighborhoods in various languages.</p>
@@ -74,13 +79,20 @@
 <p>You can install the development version of hood2net like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages('devtools')</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'csqsiew/hood2net'</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'csqsiew/hood2net'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># alternatively </span></span>
+<span><span class="co"># install.packages('pak')</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"csqsiew/hootnet"</span><span class="op">)</span></span></code></pre></div>
+<p>Or directly from CRAN:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'hood2net'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>Get started with <code>hood2net</code> right away:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://csqsiew.github.io/hood2net/">hood2net</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sample1</span> <span class="co"># this is a sample list of items that comes with the package</span></span>
@@ -90,7 +102,7 @@
 <span></span>
 <span><span class="va">my_network</span> </span></code></pre></div>
 <p>After creating the network, you can use helper functions to get some information about the network:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># overall network metrics </span></span>
 <span><span class="fu"><a href="reference/get_network_info.html">get_network_info</a></span><span class="op">(</span><span class="va">my_network</span><span class="op">)</span></span>
 <span></span>
@@ -105,6 +117,7 @@
 <p>Finally, there are many ways to define what counts as a neighbor, although the 1-edit distance is a very common approach used in the field (e.g., Luce &amp; Pisoni, 1998). If you have any suggestions for alternative approaches, feel free to pop them into the issues page.</p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
@@ -124,7 +137,7 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Cynthia Siew <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Cynthia Siew <br><small class="roles"> Author, maintainer, copyright holder </small>   </li>
 </ul>
 </div>
 

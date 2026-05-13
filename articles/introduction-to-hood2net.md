@@ -63,14 +63,31 @@ languages beyond English.
 
 ## Set up
 
-`hood2net` can be downloaded from Github while the package is being
-prepared for submission to CRAN as follows. In order to compile the
-package on your local computer, Windows users will need to install…
+The development version of `hood2net` can be downloaded from Github
+using the following code. In order to compile the package on your local
+computer, additional programs may need to be installed. For instance,
+Windows users will need to install
+[RTools](https://cran.r-project.org/bin/windows/Rtools/), whereas Mac
+users will probably need XCode.
 
 ``` r
 
-# install devtools first if needed
+# install.packages('devtools')
 # devtools::install_github('csqsiew/hood2net')
+
+# alternatively
+# install.packages('pak')
+# pak::pkg_install("csqsiew/hootnet")
+
+# then load the package
+library(hood2net)
+```
+
+Alternatively, `hood2net` can also be installed from CRAN as follows:
+
+``` r
+
+# install.packages('hood2net')
 
 # then load the package
 library(hood2net)
@@ -326,7 +343,7 @@ attribute.
 ``` r
 
 summary(g1)
-#> IGRAPH c7d317c UN-- 9 9 -- test
+#> IGRAPH 923b90f UN-- 9 9 -- test
 #> + attr: name (g/c), name (v/c), item (v/c), length (v/n)
 ```
 
