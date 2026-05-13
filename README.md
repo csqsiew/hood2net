@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+# hood2net <a href="https://csqsiew.github.io/hood2net/"><img src="man/figures/logo.png" align="right" height="139" alt="hood2net website" /></a>
+
+[![R-CMD-check](https://github.com/csqsiew/hood2net/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/csqsiew/hood2net/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The `hood2net` package takes a list of words and/or their phonological
@@ -37,6 +40,16 @@ You can install the development version of hood2net like so:
 ``` r
 # install.packages('devtools')
 devtools::install_github('csqsiew/hood2net')
+
+# alternatively 
+# install.packages('pak')
+pak::pkg_install("csqsiew/hootnet")
+```
+
+Or directly from CRAN:
+
+``` r
+install.packages('hood2net')
 ```
 
 ## Example

@@ -5,7 +5,6 @@
 #' @param item_df A data frame containing node-level attributes that are appended to the network.
 #'
 #' @returns An igraph network object.
-#' @export
 #' @keywords internal
 #'
 #' @examples

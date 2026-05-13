@@ -1,7 +1,6 @@
 #' To check if edit_size is a whole number or not. Internal function used by `make_network()` and `make_network_sep()`.
 #'
 #' @returns TRUE oR FALSE.
-#' @export
 #' @keywords internal
 #'
 is.wholenumber <-

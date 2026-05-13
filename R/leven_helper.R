@@ -11,7 +11,6 @@
 #' @examples
 #'
 #' sepLeven_C("spin.ach", c("spin.ner", "spi.ner", "spin.ach.er"))
-#' @export
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib hood2net, .registration = TRUE
 sepLeven_C <- function(s, t, sep=".") {
@@ -31,7 +30,6 @@ sepLeven_C <- function(s, t, sep=".") {
 #' @examples
 #'
 #' sepSub_C("spin.ach", c("spin.ner", "spi.ner", "spin.ach.er"))
-#' @export
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib hood2net, .registration = TRUE
 sepSub_C <- function(s, t, sep=".") {
