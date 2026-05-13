@@ -5,12 +5,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>introduction-to-hood2net • hood2net</title>
+<title>A Quick Introduction to hood2net • hood2net</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="introduction-to-hood2net">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="A Quick Introduction to hood2net">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -33,7 +38,8 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/introduction-to-hood2net.html">introduction-to-hood2net</a></li>
+<li><a class="dropdown-item" href="../articles/case-studies.html">Examples and Case Studies</a></li>
+    <li><a class="dropdown-item" href="../articles/introduction-to-hood2net.html">A Quick Introduction to hood2net</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -54,8 +60,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>introduction-to-hood2net</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>A Quick Introduction to hood2net</h1>
             
       
 
@@ -67,21 +72,24 @@
 <div class="section level2">
 <h2 id="introduction-and-motivation">Introduction and Motivation<a class="anchor" aria-label="anchor" href="#introduction-and-motivation"></a>
 </h2>
-<p>UNDER CONSTRUCTION</p>
 <p>The <code>hood2net</code> package takes a list of words and/or their
 phonological transcriptions and creates a language network based on
-their neighborhood structure.</p>
+their phonological or orthographic neighborhood structure. This is where
+the name of the package comes from: From a word’s neighborHOOD to a
+NETwork.</p>
 <p>First, the phonological/orthographic neighbors for each item in the
 list are identified based on various definitions of a “neighbor”. A pair
 of words can be considered to be neighbors (and thus become connected in
-the network) via the following ways: edit-distance (substitution,
-deletion, or addition; i.e., Levenshtein) or substitution only (i.e.,
-Hamming). The default setting uses a distance of 1, but larger distances
-can be specified for a more liberal definition of a neighbor. The
-segmentation of the transcription can also be specified: either based on
-single character (i.e., single letter or phoneme) or user-specified
-segments indicated by separators (e.g., larger chunks like syllables or
-morphemes that are more than a single character separated by a ‘.’).</p>
+the language network) via the following ways: edit-distance
+(substitution, deletion, or addition; i.e., Levenshtein distance) or
+substitution only (i.e., Hamming distance). The default setting uses a
+distance of 1, but larger distances can be specified for a more liberal
+definition of a neighbor. The segmentation of the transcription can also
+be specified: either based on single character (i.e., single letter or
+phoneme) or user-specified segments indicated by separators (e.g.,
+larger chunks such as diphthongs, syllables, or morphemes that are
+longer than a single character separated by a symbol like ‘.’ [period]
+or ’ ’ [space]).</p>
 <p><code>hood2net</code> then summarizes the neighborhood information
 for all items in the list into an <code>igraph</code> network object for
 subsequent analyses. Helper functions for extracting network metrics,
@@ -89,12 +97,46 @@ neighborhood size, and other information from the language network are
 provided. This package is intended for psycholinguists interested in
 modeling language networks and lexical neighborhoods in various
 languages.</p>
+<div class="section level3">
+<h3 id="why-hood2net">Why <code>hood2net</code>?<a class="anchor" aria-label="anchor" href="#why-hood2net"></a>
+</h3>
+<p>Although there are several resources that exist for calculating the
+neighborhoods or similarity measures of words in language, to the best
+of my knowledge none of these existing resources provide capabilities to
+convert the neighborhood structure of words into a network, which is
+necessary for network analyses of such lexical information. Below are a
+few examples and a brief statement of their purpose and function and how
+it compares to <code>hood2net</code>:</p>
+<p><em>Jiwar</em> is a multilingual neighborhood calculator and database
+for 40 languages of various scripts (Alzahrani, 2025). It provides
+phonological, orthographic, and phonographic neighborhood measures for
+these languages based on the OpenSubtitles corpus. Although it is a
+highly comprehensive database and neighborhood calculator, Jiwar does
+not provide the functions to convert the neighborhood information into a
+language network. The multilingual word lists and phonological
+transcriptions from Jiwar could be provided to <code>hood2net</code> to
+produce language networks and extract additional types of network
+metrics (e.g., closeness centrality or eigenvector centrality). It is
+also worth noting that the vast majority of neighborhood calculators or
+databases are limited to a single language; hence another strength of
+<code>hood2net</code> is the ability to compute neighborhood measures
+for languages not yet represented or unavailable in the literature.</p>
+<p>Another database worth mentioning is by Alderete et al. (2025), who
+created phonological similarity networks of English based on the
+SUBTLEX-US English corpus. Although this database contains phonological
+networks, it is limited to English. By allowing user-specified word
+lists, <code>hood2net</code> allows for word similarity networks to be
+constructed for a variety of languages, enabling network analyses to be
+extended to languages beyond English.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="set-up">Set up<a class="anchor" aria-label="anchor" href="#set-up"></a>
 </h2>
 <p><code>hood2net</code> can be downloaded from Github while the package
-is being prepared for submission to CRAN as follows:</p>
+is being prepared for submission to CRAN as follows. In order to compile
+the package on your local computer, Windows users will need to
+install…</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install devtools first if needed</span></span>
 <span><span class="co"># devtools::install_github('csqsiew/hood2net')</span></span>
@@ -122,7 +164,8 @@ provided in the package. Let’s view the list:</p>
 <p>Notice that it is a list of words and the second column contains the
 number of letters. Let’s say we want to create an orthographic
 similarity network where pairs of words that are different by the
-substitution, deletion or addition of one letter…</p>
+substitution, deletion or addition of one letter. We can run the
+following R code as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
@@ -137,24 +180,217 @@ substitution, deletion or addition of one letter…</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     union</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g1</span>, vertex.frame.color <span class="op">=</span> <span class="st">'white'</span>, vertex.label.dist <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>     frame <span class="op">=</span> <span class="cn">TRUE</span>, main <span class="op">=</span> <span class="st">'Single character, 1-edit Levenshtein distance'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="introduction-to-hood2net_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="700"></p>
+<p>Notice that the default settings of <code>make_network</code> is to
+segment each item based on single characters, and to create neighbors
+based on 1-edit (Levenshtein) distance.</p>
+<p>If we would like to create substitution-only networks, we can easily
+do this by changing the arguments in <code>make_network</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span>, neighbor_type <span class="op">=</span> <span class="st">'hamming'</span><span class="op">)</span> <span class="co"># sub-only</span></span>
+<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g2</span>, vertex.frame.color <span class="op">=</span> <span class="st">'white'</span>, vertex.label.dist <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>     frame <span class="op">=</span> <span class="cn">TRUE</span>, main <span class="op">=</span> <span class="st">'Single character, Hamming distance of 1'</span><span class="op">)</span></span></code></pre></div>
+<p><img src="introduction-to-hood2net_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="700"></p>
+<p>For a more liberal operationalization of neighbors, we can also allow
+pairs of words to be neighbors if they are different by up to 2-edit
+distance, by adapting the code as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">g3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span>, edit_size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g3</span>, vertex.frame.color <span class="op">=</span> <span class="st">'white'</span>, vertex.label.dist <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>     frame <span class="op">=</span> <span class="cn">TRUE</span>, main <span class="op">=</span> <span class="st">'Single character, 2-edist Levenshtein distance'</span><span class="op">)</span></span></code></pre></div>
+<p><img src="introduction-to-hood2net_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="700"></p>
+<p>Notice that in this network, the words ‘heat’ and ‘hate’ are
+connected as a deletion and an addition (2 operations) are needed to
+convert from one string into the other.</p>
+<p>If you don’t want to use single characters as the segmentation
+scheme, the <code>make_network_sep</code> function can be used instead
+and each item can be segmented based on the separator symbol specified.
+In this sample list, we have the same list of items as before, but with
+periods (.) separating each letter. We can use the
+<code>make_network_sep</code> function to create a network by segmenting
+the items based on the periods:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample2</span></span>
+<span><span class="co">#&gt;            item length</span></span>
+<span><span class="co">#&gt; 1         c.a.t      3</span></span>
+<span><span class="co">#&gt; 2         b.a.t      3</span></span>
+<span><span class="co">#&gt; 3         c.u.t      3</span></span>
+<span><span class="co">#&gt; 4         c.a.p      3</span></span>
+<span><span class="co">#&gt; 5         h.a.t      3</span></span>
+<span><span class="co">#&gt; 6       c.h.a.t      4</span></span>
+<span><span class="co">#&gt; 7       h.e.a.t      4</span></span>
+<span><span class="co">#&gt; 8       h.a.t.e      4</span></span>
+<span><span class="co">#&gt; 9 s.p.i.n.a.c.h      7</span></span>
+<span></span>
+<span><span class="va">g4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_network_sep.html">make_network_sep</a></span><span class="op">(</span><span class="va">sample2</span>, separator <span class="op">=</span> <span class="st">'.'</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g4</span>, vertex.frame.color <span class="op">=</span> <span class="st">'white'</span>, vertex.label.dist <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>     frame <span class="op">=</span> <span class="cn">TRUE</span>, main <span class="op">=</span> <span class="st">'Period separator, 1-edit Levenshtein distance'</span><span class="op">)</span></span></code></pre></div>
+<p><img src="introduction-to-hood2net_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="700"></p>
+<p>This function may be useful for situations where you would like
+subgroups of characters to be considered as a single unit, for instance,
+if there are diphthongs (e.g., “\aɪ\”) or if you wish to explore
+higher-order structures like syllabic structure. The default separator
+symbol is the period, but other symbols like ’ ’ [space] are also
+permitted. The other arguments mentioned, <code>edit_size</code> and
+<code>neighbor_type</code>, are also applicable for the
+<code>make_network_sep</code> function.</p>
+<p><em>Pro-tip</em>: You may want to save very large networks as they
+take a long time to complete. This can be done easily and then you can
+reload the file into your next R session.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># save</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">g1</span>, file <span class="op">=</span> <span class="st">'my-network.RDS'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">'my-network.RDS'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="computing-network-and-neighborhood-measures">Computing network and neighborhood measures<a class="anchor" aria-label="anchor" href="#computing-network-and-neighborhood-measures"></a>
 </h2>
+<p>Once the language network is generated, it can be used to (i) obtain
+global-level or macro-level information about the network structure, and
+(ii) generate neighborhood-metrics for individual words.</p>
+<div class="section level3">
+<h3 id="obtaining-macro-level-network-measures">Obtaining macro-level network measures<a class="anchor" aria-label="anchor" href="#obtaining-macro-level-network-measures"></a>
+</h3>
+<p>The helper function <code>get_network_info</code> can be used to get
+this information readily:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_network_info.html">get_network_info</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          nodes          edges           ASPL      global CC        mean CC </span></span>
+<span><span class="co">#&gt;          9.000          9.000          1.821          0.273          0.267 </span></span>
+<span><span class="co">#&gt;       diameter    mean degree no. components   prop. in LCC </span></span>
+<span><span class="co">#&gt;          3.000          2.000          2.000          0.889</span></span></code></pre></div>
+<p>It returns in a named vector:</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>nodes</code>: The number of nodes.</li>
+<li>
+<code>edges</code>: The number of edges.</li>
+<li>
+<code>ASPL</code>: Average shortest path length refers to the mean
+of the shortest path between all possible node pairs (that have an
+non-infinite path).</li>
+<li>
+<code>global CC</code>: Global clustering coefficient or
+transitivity refers to the proportion of closed triangles in the network
+relative to the number of possible triangles. It is a measure of overall
+level of local connectivity among nodes in the network.</li>
+<li>
+<code>mean CC</code>: The average local clustering coefficient
+refers to the mean of each node’s local clustering coefficient, which
+measures the amount of interconnectivity in the local neighborhood of
+each node.</li>
+<li>
+<code>diameter</code>: Diameter refers to the length of the longest
+short path between node pairs in the network.</li>
+<li>
+<code>mean degree</code>: The average degree of all nodes in the
+network. Degree refers to the number of links (or neighbors) that each
+node has.</li>
+<li>
+<code>no. components</code>: The number of distinct, separate
+components in the network.</li>
+<li>
+<code>prop. in LCC</code>: The proportion of nodes found in the
+largest connected component of the network.</li>
+</ol>
+<p>For more details about these measures and their application to
+language or cognitive networks, please refer to <a href="https://csqsiew.github.io" class="external-link">https://csqsiew.github.io</a> (an
+online tutorial “Introduction to Network Analysis in
+<code>igraph</code>”) and Siew et al. (2019).</p>
+<p>If you wish to compute other network measures, you can simply pass
+the network object into the relevant <code>igraph</code> function. Below
+we compute the density of the network <code>g1</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r.igraph.org/" class="external-link">igraph</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://r.igraph.org/reference/edge_density.html" class="external-link">edge_density</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.25</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="compute-micro-level-network-measures-for-individual-nodes">Compute micro-level network measures for individual nodes<a class="anchor" aria-label="anchor" href="#compute-micro-level-network-measures-for-individual-nodes"></a>
+</h3>
+<p>Another cool feature of <code>hood2net</code> is the ability to
+easily extract the neighborhood information for all or subsets of nodes
+in the network.</p>
+<p>To obtain neighborhood size, which corresponds to node degree:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_neighbor_size.html">get_neighbor_size</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span></span>
+<span><span class="co">#&gt;         5         2         1         1         5         2         1         1 </span></span>
+<span><span class="co">#&gt; 9_spinach </span></span>
+<span><span class="co">#&gt;         0</span></span></code></pre></div>
+<p>To obtain local clustering coefficient, which is a measure of how
+interconnected a node’s neighborhood is:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_neighbor_clustering.html">get_neighbor_clustering</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span></span>
+<span><span class="co">#&gt;       0.2       1.0       0.0       0.0       0.2       1.0       0.0       0.0 </span></span>
+<span><span class="co">#&gt; 9_spinach </span></span>
+<span><span class="co">#&gt;       0.0</span></span></code></pre></div>
+<p>It is also possible to compute the mean of a node’s neighbors’
+property. Recall that in <code>sample1</code>, there was a second column
+depicting the length of the word:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample1</span></span>
+<span><span class="co">#&gt;      item length</span></span>
+<span><span class="co">#&gt; 1     cat      3</span></span>
+<span><span class="co">#&gt; 2     bat      3</span></span>
+<span><span class="co">#&gt; 3     cut      3</span></span>
+<span><span class="co">#&gt; 4     cap      3</span></span>
+<span><span class="co">#&gt; 5     hat      3</span></span>
+<span><span class="co">#&gt; 6    chat      4</span></span>
+<span><span class="co">#&gt; 7    heat      4</span></span>
+<span><span class="co">#&gt; 8    hate      4</span></span>
+<span><span class="co">#&gt; 9 spinach      7</span></span></code></pre></div>
+<p>In the constructed network, <code>length</code> is included as a node
+or vertex attribute.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; IGRAPH c7d317c UN-- 9 9 -- test</span></span>
+<span><span class="co">#&gt; + attr: name (g/c), name (v/c), item (v/c), length (v/n)</span></span></code></pre></div>
+<p>This makes it possible to obtain the mean length of each node’s
+neighbor, as follows:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_neighbor_mean.html">get_neighbor_mean</a></span><span class="op">(</span><span class="va">g1</span>, attribute <span class="op">=</span> <span class="st">'length'</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span></span>
+<span><span class="co">#&gt;       3.2       3.0       3.0       3.0       3.6       3.0       3.0       3.0 </span></span>
+<span><span class="co">#&gt; 9_spinach </span></span>
+<span><span class="co">#&gt;       NaN</span></span></code></pre></div>
+<p>Notice that the name of the node attribute must be specified. A
+useful application of this function is that lexical properties of words
+can be appended to the list that was initially submitted to
+<code>make_network</code>, and automatically embedded into the network
+as node attributes. If word frequency were included, it would be
+possible use this function to compute mean neighborhood frequency for
+all items in the network, and also compute macro-level network
+information such as assortative mixing by frequency (i.e., do
+high-frequency words tend to be connected to other high-frequency words
+in the network?).</p>
+</div>
 </div>
 <div class="section level2">
-<h2 id="case-studies-and-examples">Case Studies and Examples<a class="anchor" aria-label="anchor" href="#case-studies-and-examples"></a>
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div class="section level3">
-<h3 id="case-study-1">Case Study 1:<a class="anchor" aria-label="anchor" href="#case-study-1"></a>
-</h3>
-</div>
-<div class="section level3">
-<h3 id="case-study-2">Case Study 2:<a class="anchor" aria-label="anchor" href="#case-study-2"></a>
-</h3>
-</div>
+<p>Alderete, J., Mann, S., &amp; Tupper, P. (2025). Open-access network
+science: Investigating phonological similarity networks based on the
+SUBTLEX-US lexicon. <em>Behavior Research Methods, 57</em>(3), 96. <a href="https://doi.org/10.3758/s13428-025-02610-9" class="external-link">https://doi.org/10.3758/s13428-025-02610-9</a></p>
+<p>Alzahrani, A. (2025). Jiwar: A database and calculator for word
+neighborhood measures in 40 languages. <em>Behavior Research Methods,
+57</em>(3), 98. <a href="https://doi.org/10.3758/s13428-025-02612-7" class="external-link">https://doi.org/10.3758/s13428-025-02612-7</a></p>
+<p>Siew, C. S. Q., Wulff, D. U., Beckage, N. M., &amp; Kenett, Y. N.
+(2019). Cognitive Network Science: A Review of Research on Cognition
+through the Lens of Network Representations, Processes, and Dynamics.
+<em>Complexity</em>, e2108423. <a href="https://doi.org/10.1155/2019/2108423" class="external-link">https://doi.org/10.1155/2019/2108423</a></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
