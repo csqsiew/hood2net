@@ -343,7 +343,7 @@ attribute.
 ``` r
 
 summary(g1)
-#> IGRAPH 923b90f UN-- 9 9 -- test
+#> IGRAPH 4a32cba UN-- 9 9 -- test
 #> + attr: name (g/c), name (v/c), item (v/c), length (v/n)
 ```
 
