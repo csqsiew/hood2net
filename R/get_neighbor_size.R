@@ -8,10 +8,11 @@
 #'
 #' @examples
 #' # Use the demo data for executing examples
-#' \dontrun{
+#'
+#'   test <- make_network(sample1)
 #'   get_neighbor_size(network = test) # all nodes
 #'   get_neighbor_size(network = test, node_name = "1_cat") # for 1 node
-#' }
+#'
 get_neighbor_size <- function(network, node_name = NULL) {
 
   # sanity checks

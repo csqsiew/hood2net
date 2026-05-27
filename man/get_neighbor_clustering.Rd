@@ -19,8 +19,9 @@ Returns the neighborhood clustering (i.e., local transitivity or local clusterin
 }
 \examples{
 # Use the demo data for executing examples
-\dontrun{
+
+  test <- make_network(sample1)
   get_neighbor_clustering(network = test) # all nodes
   get_neighbor_clustering(network = test, node_name = "1_cat") # for 1 node
-}
+
 }

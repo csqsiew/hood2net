@@ -21,8 +21,9 @@ Returns the mean of a neighborhood's attribute for all or a subset of nodes in t
 }
 \examples{
 # Use the demo data for executing examples
-\dontrun{
+
+  test <- make_network(sample1)
   get_neighbor_mean(network = test, attribute = "length") # all nodes
   get_neighbor_mean(network = test, node_name = "1_cat", attribute = "length") # for 1 node
-}
+
 }

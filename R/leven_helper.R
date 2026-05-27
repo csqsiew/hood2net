@@ -7,10 +7,8 @@
 #' @param sep A character separator by which `s` and `t` are segmented by.
 #'
 #' @returns A numeric element indicating the edit distance of the target string to all other strings.
+#' @keywords internal
 #'
-#' @examples
-#'
-#' sepLeven_C("spin.ach", c("spin.ner", "spi.ner", "spin.ach.er"))
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib hood2net, .registration = TRUE
 sepLeven_C <- function(s, t, sep=".") {
@@ -26,10 +24,8 @@ sepLeven_C <- function(s, t, sep=".") {
 #' @param sep A character separator by which `s` and `t` are segmented by.
 #'
 #' @returns A numeric element indicating the edit distance of the target string to all other strings.
+#' @keywords internal
 #'
-#' @examples
-#'
-#' sepSub_C("spin.ach", c("spin.ner", "spi.ner", "spin.ach.er"))
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib hood2net, .registration = TRUE
 sepSub_C <- function(s, t, sep=".") {

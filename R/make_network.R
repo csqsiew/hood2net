@@ -10,13 +10,13 @@
 #'
 #' @examples
 #' # Use the demo data for executing examples
-#' \dontrun{
-#'   g <- create_network(item_df = sample_df) # substitution, addition, deletion
+#'
+#'   g <- make_network(item_df = sample1) # substitution, addition, deletion
 #'   summary(g)
 #'
-#'   g_sub <- create_network(item_df = sample_df, neighbor_type = 'hamming') # substitution only
+#'   g_sub <- make_network(item_df = sample1, neighbor_type = 'hamming') # substitution only
 #'   summary(g_sub)
-#' }
+#'
 #' @importFrom utils setTxtProgressBar txtProgressBar
 make_network <- function(item_df, neighbor_type = 'lv', network_name = 'test', edit_size = 1) {
 

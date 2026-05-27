@@ -7,14 +7,6 @@
 #' @returns An igraph network object.
 #' @keywords internal
 #'
-#' @examples
-#' \dontrun{
-#'   # buf is the list object containing the item neighborhoods, the output of
-#'   # various string computation functions.
-#'   # the other arguments are inherited from make_network()
-#'
-#'   adj_list_to_graph(adj_list = buf, network_name = network_name, item_df = item_df)
-#' }
 adj_list_to_graph <- function(adj_list, network_name, item_df) {
 
   g <- igraph::graph_from_adj_list(adj_list, mode = 'all') # convert the adjacency list into a network object

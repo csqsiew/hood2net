@@ -7,9 +7,10 @@
 #'
 #' @examples
 #' #' # Use the demo data for executing examples
-#' \dontrun{
+#'
+#'   test <- make_network(sample1)
 #'   get_network_info(network = test)
-#' }
+#'
 get_network_info <- function(network) {
 
   # is the object an igraph object?

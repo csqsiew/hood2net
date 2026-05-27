@@ -11,14 +11,14 @@
 #'
 #' @examples
 #' #' # Use the demo data for executing examples
-#' \dontrun{
-#'   g_sep <- create_network_sep(item_df = sample_df2) # substitution, addition, deletion
+#'
+#'   g_sep <- make_network_sep(item_df = sample2) # substitution, addition, deletion
 #'   summary(g_sep)
 #'
 #'   # substitution only
-#'   g_sep_sub <- create_network_sep(item_df = sample_df2, neighbor_type = 'hamming')
+#'   g_sep_sub <- make_network_sep(item_df = sample2, neighbor_type = 'hamming')
 #'   summary(g_sep_sub)
-#' }
+#'
 #' @importFrom utils setTxtProgressBar txtProgressBar
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib hood2net, .registration = TRUE

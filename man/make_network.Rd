@@ -28,11 +28,11 @@ Create a language network from a list of items. This version takes each single c
 }
 \examples{
 # Use the demo data for executing examples
-\dontrun{
-  g <- create_network(item_df = sample_df) # substitution, addition, deletion
+
+  g <- make_network(item_df = sample1) # substitution, addition, deletion
   summary(g)
 
-  g_sub <- create_network(item_df = sample_df, neighbor_type = 'hamming') # substitution only
+  g_sub <- make_network(item_df = sample1, neighbor_type = 'hamming') # substitution only
   summary(g_sub)
-}
+
 }

@@ -19,7 +19,4 @@ A numeric element indicating the edit distance of the target string to all other
 \description{
 Helper function to compute edit distance between two strings using the \code{vecSub_C} function, which is written in C to optimize performance. This is the substitution only version.
 }
-\examples{
-
-sepSub_C("spin.ach", c("spin.ner", "spi.ner", "spin.ach.er"))
-}
+\keyword{internal}

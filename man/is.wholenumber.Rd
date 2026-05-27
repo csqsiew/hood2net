@@ -7,7 +7,7 @@
 is.wholenumber(x, tol = .Machine$double.eps^0.5)
 }
 \value{
-TRUE oR FALSE.
+TRUE or FALSE.
 }
 \description{
 To check if edit_size is a whole number or not. Internal function used by \code{make_network()} and \code{make_network_sep()}.

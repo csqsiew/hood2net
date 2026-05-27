@@ -10,7 +10,10 @@ Description: Input a list of words and/or their phonological
     edit-distance (substitution, deletion, or addition), substitution-only; 
     distance size (1-edit or more); based on single characters or segments indicated 
     by separators) and summarizes this information in an 'igraph' network object 
-    for subsequent analyses. Helper functions for extracting network metrics, 
+    for subsequent analyses. For more details see Luce & Pisoni (1998) 
+    <doi:10.1097/00003446-199802000-00001> and Vitevitch (2008) 
+    <doi:10.1044/1092-4388(2008/030)>. 
+    Helper functions for extracting network metrics, 
     neighbors, and other information from the language network are provided. 
     This package is intended for psycholinguists interested in modeling language 
     networks and word neighborhoods in various languages.  

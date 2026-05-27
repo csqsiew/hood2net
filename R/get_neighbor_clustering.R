@@ -8,10 +8,11 @@
 #'
 #' @examples
 #' # Use the demo data for executing examples
-#' \dontrun{
+#'
+#'   test <- make_network(sample1)
 #'   get_neighbor_clustering(network = test) # all nodes
 #'   get_neighbor_clustering(network = test, node_name = "1_cat") # for 1 node
-#' }
+#'
 get_neighbor_clustering <- function(network, node_name = NULL) {
 
   # sanity checks

@@ -19,13 +19,4 @@ An igraph network object.
 \description{
 Convert an adjacency list of neighborhoods into an igraph network object. Internal function used by \code{make_network()} and \code{make_network_sep()}.
 }
-\examples{
-\dontrun{
-  # buf is the list object containing the item neighborhoods, the output of
-  # various string computation functions.
-  # the other arguments are inherited from make_network()
-
-  adj_list_to_graph(adj_list = buf, network_name = network_name, item_df = item_df)
-}
-}
 \keyword{internal}
