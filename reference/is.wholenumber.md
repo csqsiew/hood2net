@@ -14,4 +14,4 @@ is.wholenumber(x, tol = .Machine$double.eps^0.5)
 
 ## Value
 
-TRUE oR FALSE.
+TRUE or FALSE.

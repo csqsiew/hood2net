@@ -40,8 +40,15 @@ A named numeric vector.
 
 ``` r
 # Use the demo data for executing examples
-if (FALSE) { # \dontrun{
+
+  test <- make_network(sample1)
+#>   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%
   get_neighbor_mean(network = test, attribute = "length") # all nodes
+#>     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate 
+#>       3.2       3.0       3.0       3.0       3.6       3.0       3.0       3.0 
+#> 9_spinach 
+#>       NaN 
   get_neighbor_mean(network = test, node_name = "1_cat", attribute = "length") # for 1 node
-} # }
+#> 1_cat 
+#>   3.2 
 ```

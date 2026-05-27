@@ -28,11 +28,3 @@ sepLeven_C(s, t, sep = ".")
 
 A numeric element indicating the edit distance of the target string to
 all other strings.
-
-## Examples
-
-``` r
-
-sepLeven_C("spin.ach", c("spin.ner", "spi.ner", "spin.ach.er"))
-#> [1] 1 2 1
-```

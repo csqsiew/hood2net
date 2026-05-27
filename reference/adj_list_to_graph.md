@@ -30,15 +30,3 @@ adj_list_to_graph(adj_list, network_name, item_df)
 ## Value
 
 An igraph network object.
-
-## Examples
-
-``` r
-if (FALSE) { # \dontrun{
-  # buf is the list object containing the item neighborhoods, the output of
-  # various string computation functions.
-  # the other arguments are inherited from make_network()
-
-  adj_list_to_graph(adj_list = buf, network_name = network_name, item_df = item_df)
-} # }
-```
