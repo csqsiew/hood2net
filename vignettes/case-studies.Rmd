@@ -2,7 +2,7 @@
 title: "Examples and Case Studies"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{case-studies}
+  %\VignetteIndexEntry{Examples and Case Studies}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,6 +15,9 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+#| echo: true
+#| eval: false
+
 library(hood2net)
 ```
 
@@ -24,9 +27,7 @@ library(hood2net)
 
 In this section, I provide two examples of how `hood2net` can be applied in psycholinguistic studies. The first case study shows how the package can be used to compute network measures of individual networks of children's vocabulary. The second case study shows how the package can be used to compute neighborhood measures for a large list of words in a language. 
 
-## Case Study 1: Extracting the structure of individual language networks
-
-For this case study, we will leverage on the `wordbankr` package to extract vocabulary lists of... 
+## Case Study 1: 
 
 ## Case Study 2: 
 

@@ -12,7 +12,7 @@
 #'
 #'   test <- make_network(sample1)
 #'   get_neighbor_mean(network = test, attribute = "length") # all nodes
-#'   get_neighbor_mean(network = test, node_name = "1_cat", attribute = "length") # for 1 node
+#'   get_neighbor_mean(network = test, node_name = "cat", attribute = "length") # for 1 node
 #'
 get_neighbor_mean <- function(network, node_name = NULL, attribute) {
 

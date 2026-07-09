@@ -22,6 +22,6 @@ Returns the neighborhood size (i.e., degree) for all or a subset of nodes in the
 
   test <- make_network(sample1)
   get_neighbor_size(network = test) # all nodes
-  get_neighbor_size(network = test, node_name = "1_cat") # for 1 node
+  get_neighbor_size(network = test, node_name = "cat") # for 1 node
 
 }

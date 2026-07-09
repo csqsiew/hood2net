@@ -60,30 +60,86 @@ make_network_sep <- function(item_df, separator = '.', neighbor_type = 'lv', net
     stop('Message: the "item" column in item_df is not a character class.')
   }
 
-  buf <- list() # buffer to store results
+  n <- nrow(item_df)
+  items <- item_df$item
 
-  pb <- txtProgressBar(min = 0, max = nrow(item_df), style = 3) # progress bar only works for normal lapply
+  edge_capacity <- min(n * 10L, 2000000L)
+  edge_from <- integer(edge_capacity)
+  edge_to   <- integer(edge_capacity)
+  edge_count <- 0L
+
+  pb <- txtProgressBar(min = 0, max = n, style = 3)
 
   if(neighbor_type == 'lv') { # SAD
-    buf <- lapply(1:nrow(item_df), function(i) { # for each word in the item_df$item
 
-      setTxtProgressBar(pb, i) # this must be placed BEFORE the main computation
+  for (i in 1:(n - 1)) {
 
-      which(sepLeven_C(item_df$item[i], item_df$item, sep = separator) < edit_size+1 & sepLeven_C(item_df$item[i], item_df$item, sep = separator) > 0)
+    setTxtProgressBar(pb, i)
 
-  })
+    candidates <- items[(i + 1):n]
+    dists <- sepLeven_C(item_df$item[i], candidates, sep = separator) # different from make_network using sepLeven_C
+    hits <- which(dists <= edit_size & dists > 0) + i
+
+    if (length(hits) > 0) {
+      new_count <- edge_count + length(hits)
+
+      if (new_count > edge_capacity) {
+        edge_capacity <- max(new_count, edge_capacity * 2L)
+        length(edge_from) <- edge_capacity
+        length(edge_to)   <- edge_capacity
+      }
+
+      edge_from[(edge_count + 1):new_count] <- i
+      edge_to[(edge_count + 1):new_count]   <- hits
+      edge_count <- new_count
+    }
+  }
+
   }
 
   if(neighbor_type == 'hamming') { # SUB ONLY
-    buf <- lapply(1:nrow(item_df), function(i) { # for each word in the item_df$item
 
-      setTxtProgressBar(pb, i) # this must be placed BEFORE the main computation
+    for (i in 1:(n - 1)) {
 
-      which(sepSub_C(item_df$item[i], item_df$item, sep = separator) < edit_size+1 & sepSub_C(item_df$item[i], item_df$item, sep = separator) > 0)
+      setTxtProgressBar(pb, i)
 
-  })
+      candidates <- items[(i + 1):n]
+      dists <- sepSub_C(item_df$item[i], candidates, sep = separator) # use sepSub_C instead
+      hits <- which(dists <= edit_size & dists > 0) + i
+
+      if (length(hits) > 0) {
+        new_count <- edge_count + length(hits)
+
+        if (new_count > edge_capacity) {
+          edge_capacity <- max(new_count, edge_capacity * 2L)
+          length(edge_from) <- edge_capacity
+          length(edge_to)   <- edge_capacity
+        }
+
+        edge_from[(edge_count + 1):new_count] <- i
+        edge_to[(edge_count + 1):new_count]   <- hits
+        edge_count <- new_count
+      }
+    }
+
   }
 
-  adj_list_to_graph(adj_list = buf, network_name = network_name, item_df = item_df)
+  close(pb)
+
+  edge_from <- edge_from[1:edge_count]
+  edge_to   <- edge_to[1:edge_count]
+
+  g <- igraph::make_empty_graph(n = n, directed = FALSE)
+  igraph::V(g)$name <- items
+
+  g <- igraph::add_edges(g, c(rbind(edge_from, edge_to)))
+
+  for (col in setdiff(colnames(item_df), "item")) {
+    g <- igraph::set_vertex_attr(g, col, value = item_df[[col]])
+  }
+
+  g <- igraph::set_graph_attr(g, "name", network_name)
+
+  g
 
 }

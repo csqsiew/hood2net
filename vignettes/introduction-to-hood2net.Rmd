@@ -2,7 +2,7 @@
 title: "A Quick Introduction to hood2net"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{introduction-to-hood2net}
+  %\VignetteIndexEntry{A Quick Introduction to hood2net}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
