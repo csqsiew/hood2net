@@ -16,10 +16,7 @@ children’s vocabulary. The second case study shows how the package can
 be used to compute neighborhood measures for a large list of words in a
 language.
 
-### Case Study 1: Extracting the structure of individual language networks
-
-For this case study, we will leverage on the `wordbankr` package to
-extract vocabulary lists of…
+### Case Study 1:
 
 ### Case Study 2:
 

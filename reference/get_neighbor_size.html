@@ -67,15 +67,13 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Use the demo data for executing examples</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="make_network.html">make_network</a></span><span class="op">(</span><span class="va">sample1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%  |                                                                              |======================================================================| 100%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |========                                                              |  11%  |                                                                              |================                                                      |  22%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================                                       |  44%  |                                                                              |=======================================                               |  56%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |==============================================================        |  89%</span>
 <span class="r-in"><span>  <span class="fu">get_neighbor_size</span><span class="op">(</span>network <span class="op">=</span> <span class="va">test</span><span class="op">)</span> <span class="co"># all nodes</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1_cat     2_bat     3_cut     4_cap     5_hat    6_chat    7_heat    8_hate </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         5         2         1         1         5         2         1         1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9_spinach </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         0 </span>
-<span class="r-in"><span>  <span class="fu">get_neighbor_size</span><span class="op">(</span>network <span class="op">=</span> <span class="va">test</span>, node_name <span class="op">=</span> <span class="st">"1_cat"</span><span class="op">)</span> <span class="co"># for 1 node</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1_cat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     cat     bat     cut     cap     hat    chat    heat    hate spinach </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       5       2       1       1       5       2       1       1       0 </span>
+<span class="r-in"><span>  <span class="fu">get_neighbor_size</span><span class="op">(</span>network <span class="op">=</span> <span class="va">test</span>, node_name <span class="op">=</span> <span class="st">"cat"</span><span class="op">)</span> <span class="co"># for 1 node</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5 </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -88,7 +86,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
